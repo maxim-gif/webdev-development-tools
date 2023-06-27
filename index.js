@@ -1,3 +1,6 @@
-import { renderStartPage } from "./render.js";
+import { renderStartPage, renderGamePage } from "./render.js";
 const app = document.getElementById("app");
-renderStartPage(app);
+renderStartPage(app)
+
+
+

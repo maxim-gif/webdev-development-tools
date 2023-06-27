@@ -59,7 +59,11 @@ body {
     background: #ffffff;
 }
 
-.main_button {
+.item_active {
+    border: 2px solid green;
+}
+
+.button {
     height: 50px;
     width: 246px;
     font-size: 24px;
@@ -67,5 +71,63 @@ body {
     border-radius: 12px;
     background: #7AC100;
     border: none;
+}
+
+.main_button {
     margin: 0 auto;
+}
+
+.game_header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: flex-end;
+    padding: 22px;
+    padding-bottom: 35px;
+}
+
+.game_timer {
+    height: 91px;
+    width: 155px;
+}
+
+.timer_tittle {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: end;
+    column-gap: 15px;
+    justify-items: end;
+    height: 26px;
+    font-size: 16px;
+    color: #ffffff;
+    padding-right: 5px;
+
+}
+
+.timer_body {
+    height: 65px;
+    font-size: 64px;
+    line-height: 64px;
+    color: #ffffff;
+}
+
+.game_body {
+    display: grid;
+    height: 626px;
+    gap: 15px;
+    justify-content: center;
+    align-content: center;
+
+}
+
+.card {
+    border-radius: 4px;
+    background: #ffffff;
+}
+
+.cart_shirt {
+    padding-top: 11px;
+    border-radius: 4px;
+    background: #E4FBFF;
+    height: 100%;
+    width: 100%;
 }
