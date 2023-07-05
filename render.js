@@ -28,13 +28,13 @@ export function renderModalWindow(status, time) {
 export function renderStartPage(element) {
     element.innerHTML = `
     <div class="main">
-        <h1 class="main_tittle" >Выбери сложность</h1>
-        <div class="main_complexity">
-            <div class="complexity_item" id="complexity_1">1</div>
-            <div class="complexity_item" id="complexity_2">2</div>
-            <div class="complexity_item" id="complexity_3">3</div>
+        <h1 class="main-tittle" >Выбери сложность</h1>
+        <div class="main-complexity">
+            <div class="complexity-item" id="complexity_1">1</div>
+            <div class="complexity-item" id="complexity_2">2</div>
+            <div class="complexity-item" id="complexity_3">3</div>
         </div>
-        <button class="main_button button" id="startGameButton" >Старт</button>
+        <button class="main-button button" id="startGameButton" >Старт</button>
     </div>
     `
     const complexityElement1 = document.getElementById('complexity_1')
@@ -42,21 +42,21 @@ export function renderStartPage(element) {
     const complexityElement3 = document.getElementById('complexity_3')
 
     complexityElement1.addEventListener('click', () => {
-        complexityElement1.classList.add('item_active')
-        complexityElement2.classList.remove('item_active')
-        complexityElement3.classList.remove('item_active')
+        complexityElement1.classList.add('item-active')
+        complexityElement2.classList.remove('item-active')
+        complexityElement3.classList.remove('item-active')
         localStorage.setItem('complexity', 6)
     })
     complexityElement2.addEventListener('click', () => {
-        complexityElement2.classList.add('item_active')
-        complexityElement1.classList.remove('item_active')
-        complexityElement3.classList.remove('item_active')
+        complexityElement2.classList.add('item-active')
+        complexityElement1.classList.remove('item-active')
+        complexityElement3.classList.remove('item-active')
         localStorage.setItem('complexity', 12)
     })
     complexityElement3.addEventListener('click', () => {
-        complexityElement3.classList.add('item_active')
-        complexityElement2.classList.remove('item_active')
-        complexityElement1.classList.remove('item_active')
+        complexityElement3.classList.add('item-active')
+        complexityElement2.classList.remove('item-active')
+        complexityElement1.classList.remove('item-active')
         localStorage.setItem('complexity', 18)
     })
 
@@ -82,17 +82,17 @@ export function renderGamePage(element, complexity) {
 
     element.innerHTML = `
     <div class="game">
-        <header class="game_header" >
-            <div class="game_timer">
-                <div class="timer_tittle">
+        <header class="game-header" >
+            <div class="game-timer">
+                <div class="timer-tittle">
                     <div>min</div>
                     <div>sec</div>
                 </div>
-                <div class="timer_body" id="timer">00.00</div>
+                <div class="timer-body" id="timer">00.00</div>
             </div>
-            <button class="game_button button" id="gameBodyButton">Начать заново</button>
+            <button class="game-button button" id="gameBodyButton">Начать заново</button>
         </header>
-        <div class="game_body" id="game_body">
+        <div class="game-body" id="game_body">
             ${cards}
         </div>
     </div>
