@@ -34,7 +34,9 @@ export function renderStartPage(element) {
             <div class="complexity-item" id="complexity_2">2</div>
             <div class="complexity-item" id="complexity_3">3</div>
         </div>
-        <button class="main-button button" id="startGameButton" >Старт</button>
+        <form id="form-button">
+        <button type="submit" class="main-button button">Старт</button>
+      </form>
     </div>
     `
     const complexityElement1 = document.getElementById('complexity_1')
@@ -60,14 +62,17 @@ export function renderStartPage(element) {
         localStorage.setItem('complexity', 18)
     })
 
-    document.getElementById('startGameButton').addEventListener('click', () => {
-        let complexity = localStorage.getItem('complexity')
-        !complexity
-            ? alert('Выберите уровень сложности')
-            : renderGamePage(element, Number(complexity))
+    document
+        .getElementById('form-button')
+        .addEventListener('submit', function (event) {
+            event.preventDefault()
+            let complexity = localStorage.getItem('complexity')
+            !complexity
+                ? alert('Выберите уровень сложности')
+                : renderGamePage(element, Number(complexity))
 
-        delete localStorage.complexity
-    })
+            delete localStorage.complexity
+        })
 }
 
 export function renderGamePage(element, complexity) {

@@ -74,8 +74,9 @@ body {
     border: none;
 }
 
-.main-button {
-    margin: 0 auto;
+#form-button {
+    display: flex;
+    justify-content: center;
 }
 
 .game-header {
