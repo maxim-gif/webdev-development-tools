@@ -1,7 +1,7 @@
 @font-face {
-    font-family: "StratosSkyeng";
-    src: url("./assets/fonts/stratosskyengweb-regular.woff2") format("woff2"),
-    url("./assets/fonts/stratosskyengweb-regular.woff") format("woff");
+    font-family: StratosSkyeng;
+    src: url('./assets/fonts/stratosskyengweb-regular.woff2') format('woff2'),
+        url('./assets/fonts/stratosskyengweb-regular.woff') format('woff');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -17,20 +17,21 @@ body {
     background: #004980;
 }
 
-.main {
-    margin: auto auto;
+.main,
+.modal-content {
+    margin: auto;
     display: flex;
     flex-direction: column;
     margin-top: 158px;
     width: 480px;
     height: 459px;
     border-radius: 12px;
-    background: #C2F5FF;
+    background: #c2f5ff;
     padding-left: 69px;
     padding-right: 69px;
 }
 
-.main_tittle {
+.main-tittle {
     margin-top: 52px;
     width: 208px;
     font-size: 40px;
@@ -40,26 +41,26 @@ body {
     margin-right: auto;
 }
 
-.main_complexity {
+.main-complexity {
     display: flex;
     justify-content: space-between;
     margin-top: 48px;
     margin-bottom: 68px;
 }
 
-.complexity_item {
+.complexity-item {
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 64px;
-    color: #0080C1;
+    color: #0080c1;
     height: 98px;
     width: 98px;
     border-radius: 12px;
-    background: #ffffff;
+    background: #fff;
 }
 
-.item_active {
+.item-active {
     border: 2px solid green;
 }
 
@@ -67,30 +68,31 @@ body {
     height: 50px;
     width: 246px;
     font-size: 24px;
-    color: #ffffff;
+    color: #fff;
     border-radius: 12px;
-    background: #7AC100;
+    background: #7ac100;
     border: none;
 }
 
-.main_button {
-    margin: 0 auto;
+#form-button {
+    display: flex;
+    justify-content: center;
 }
 
-.game_header {
+.game-header {
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
     align-items: flex-end;
     padding: 22px;
     padding-bottom: 35px;
 }
 
-.game_timer {
+.game-timer {
     height: 91px;
     width: 155px;
 }
 
-.timer_tittle {
+.timer-tittle {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     align-items: end;
@@ -98,36 +100,68 @@ body {
     justify-items: end;
     height: 26px;
     font-size: 16px;
-    color: #ffffff;
+    color: #fff;
     padding-right: 5px;
-
 }
 
-.timer_body {
+.timer-body {
     height: 65px;
     font-size: 64px;
     line-height: 64px;
-    color: #ffffff;
+    color: #fff;
 }
 
-.game_body {
+.game-body {
     display: grid;
     height: 626px;
     gap: 15px;
     justify-content: center;
     align-content: center;
-
 }
 
 .card {
     border-radius: 4px;
-    background: #ffffff;
+    background: #fff;
 }
 
-.cart_shirt {
+.cart-shirt {
     padding-top: 11px;
     border-radius: 4px;
-    background: #E4FBFF;
+    background: #e4fbff;
     height: 100%;
     width: 100%;
+}
+
+.modal-container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(0 0 0 / 50%);
+    pointer-events: none;
+    opacity: 0;
+}
+
+.modal-content {
+    padding-top: 32px;
+    align-items: center;
+}
+
+.modal-titele {
+    font-size: 40px;
+    color: #004980;
+    margin-top: 9px;
+    margin-bottom: 28px;
+}
+
+.modal-subtitele {
+    font-size: 24px;
+}
+
+.modal-time {
+    font-size: 64px;
+    margin-top: 10px;
+    margin-bottom: 40px;
 }
