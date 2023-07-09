@@ -6,7 +6,7 @@ export function renderModalWindow(status, time) {
     if (status === 'win') {
         html = `    
         <div class="modal-content">
-        <div><img src="./assets/image/win.svg" alt=""></div>
+        <div><img src="./assets/image/win.png" alt=""></div>
         <h1 class="modal-titele">Вы выиграли!</h1>
         <h2 class="modal-subtitele">Затраченное время:</h2>
         <h3 class="modal-time">${time}</h3>
@@ -15,7 +15,7 @@ export function renderModalWindow(status, time) {
     } else {
         html = `    
         <div class="modal-content">
-        <div><img src="./assets/image/dead.svg" alt=""></div>
+        <div><img src="./assets/image/dead.png" alt=""></div>
         <h1 class="modal-titele">Вы проиграли!</h1>
         <h2 class="modal-subtitele">Затраченное время:</h2>
         <h3 class="modal-time">${time}</h3>
