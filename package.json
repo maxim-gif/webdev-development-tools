@@ -38,6 +38,8 @@
     "dependencies": {
         "copy-webpack-plugin": "^11.0.0",
         "open": "^9.1.0",
-        "save-dev": "^0.0.1-security"
+        "save-dev": "^0.0.1-security",
+        "ts-loader": "^9.4.4",
+        "typescript": "^5.1.6"
     }
 }
