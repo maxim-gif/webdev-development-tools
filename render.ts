@@ -1,7 +1,7 @@
-import { arrCards } from './storagedata.js'
-import { getRandomCards } from './function.js'
+import { arrCards } from './storagedata'
+import { getRandomCards } from './function'
 
-export function renderModalWindow(status, time) {
+export function renderModalWindow(status: string, time: string) {
     let html = ``
     if (status === 'win') {
         html = `    
@@ -25,7 +25,7 @@ export function renderModalWindow(status, time) {
     return html
 }
 
-export function renderStartPage(element) {
+export function renderStartPage(element: HTMLDivElement) {
     element.innerHTML = `
     <div class="main">
         <h1 class="main-tittle" >Выбери сложность</h1>
@@ -39,43 +39,51 @@ export function renderStartPage(element) {
       </form>
     </div>
     `
-    const complexityElement1 = document.getElementById('complexity_1')
-    const complexityElement2 = document.getElementById('complexity_2')
-    const complexityElement3 = document.getElementById('complexity_3')
+    const complexityElement1 = document.getElementById(
+        'complexity_1'
+    ) as HTMLDivElement
+    const complexityElement2 = document.getElementById(
+        'complexity_2'
+    ) as HTMLDivElement
+    const complexityElement3 = document.getElementById(
+        'complexity_3'
+    ) as HTMLDivElement
 
     complexityElement1.addEventListener('click', () => {
         complexityElement1.classList.add('item-active')
         complexityElement2.classList.remove('item-active')
         complexityElement3.classList.remove('item-active')
-        localStorage.setItem('complexity', 6)
+        localStorage.setItem('complexity', '6')
     })
     complexityElement2.addEventListener('click', () => {
         complexityElement2.classList.add('item-active')
         complexityElement1.classList.remove('item-active')
         complexityElement3.classList.remove('item-active')
-        localStorage.setItem('complexity', 12)
+        localStorage.setItem('complexity', '12')
     })
     complexityElement3.addEventListener('click', () => {
         complexityElement3.classList.add('item-active')
         complexityElement2.classList.remove('item-active')
         complexityElement1.classList.remove('item-active')
-        localStorage.setItem('complexity', 18)
+        localStorage.setItem('complexity', '18')
     })
 
-    document
-        .getElementById('form-button')
-        .addEventListener('submit', function (event) {
-            event.preventDefault()
-            let complexity = localStorage.getItem('complexity')
-            !complexity
-                ? alert('Выберите уровень сложности')
-                : renderGamePage(element, Number(complexity))
+    const formButtonElement = document.getElementById(
+        'form-button'
+    ) as HTMLDivElement
 
-            delete localStorage.complexity
-        })
+    formButtonElement.addEventListener('submit', function (event) {
+        event.preventDefault()
+        let complexity = localStorage.getItem('complexity')
+        !complexity
+            ? alert('Выберите уровень сложности')
+            : renderGamePage(element, Number(complexity))
+
+        delete localStorage.complexity
+    })
 }
 
-export function renderGamePage(element, complexity) {
+export function renderGamePage(element: HTMLDivElement, complexity: number) {
     let currentGameCards = getRandomCards(arrCards, complexity)
 
     let cards = ``
@@ -104,13 +112,18 @@ export function renderGamePage(element, complexity) {
     <div class="modal-container" id="modal"> 
     </div>
     `
-    document
-        .getElementById('gameBodyButton')
-        .addEventListener('click', () => renderStartPage(element))
 
-    let timerElement = document.getElementById('timer')
+    const gameBodyButtonElement = document.getElementById(
+        'gameBodyButton'
+    ) as HTMLDivElement
+
+    gameBodyButtonElement.addEventListener('click', () =>
+        renderStartPage(element)
+    )
+
+    let timerElement = document.getElementById('timer') as HTMLDivElement
     let mls = 0
-    let idStopwatch
+    let idStopwatch: NodeJS.Timeout
     setTimeout(() => {
         idStopwatch = setInterval(() => {
             timerElement.innerHTML = `${
@@ -120,7 +133,7 @@ export function renderGamePage(element, complexity) {
         }, 1000)
     }, 5000)
 
-    const size = document.getElementById('game_body')
+    const size = document.getElementById('game_body') as HTMLDivElement
 
     if (complexity === 6) {
         size.style.gridTemplateColumns = 'repeat(3, 95px)'
@@ -149,17 +162,20 @@ export function renderGamePage(element, complexity) {
     let secondCard = ''
     let counterCards = 0
 
-    for (let card of document.querySelectorAll('.card')) {
+    const cardsArray = Array.from(document.querySelectorAll('.card'))
+    for (let card of cardsArray) {
         card.addEventListener('click', () => {
-            let modalElement = document.getElementById('modal')
-            let index = card.dataset.index
-            const nameCard = currentGameCards[index].name
+            let modalElement = document.getElementById(
+                'modal'
+            ) as HTMLDivElement
+            let index = (card as HTMLDivElement).dataset.index as string
+            const nameCard = currentGameCards[parseInt(index)].name
             if (firstCard === '') {
                 firstCard = nameCard
-                card.style.pointerEvents = 'none'
+                ;(card as HTMLDivElement).style.pointerEvents = 'none'
             } else {
                 secondCard = nameCard
-                card.style.pointerEvents = 'none'
+                ;(card as HTMLDivElement).style.pointerEvents = 'none'
                 if (firstCard === secondCard) {
                     firstCard = ''
                     secondCard = ''
@@ -171,14 +187,15 @@ export function renderGamePage(element, complexity) {
                         )
                         clearInterval(idStopwatch)
                         setTimeout(() => {
-                            modalElement.style.opacity = 1
+                            modalElement.style.opacity = '1'
                             modalElement.style.pointerEvents = 'all'
                         }, 500)
-                        document
-                            .getElementById('modalButton')
-                            .addEventListener('click', () =>
-                                renderStartPage(element)
-                            )
+                        const modalButtonElement = document.getElementById(
+                            'modalButton'
+                        ) as HTMLDivElement
+                        modalButtonElement.addEventListener('click', () =>
+                            renderStartPage(element)
+                        )
                     }
                 } else {
                     modalElement.innerHTML = renderModalWindow(
@@ -187,14 +204,15 @@ export function renderGamePage(element, complexity) {
                     )
                     clearInterval(idStopwatch)
                     setTimeout(() => {
-                        modalElement.style.opacity = 1
+                        modalElement.style.opacity = '1'
                         modalElement.style.pointerEvents = 'all'
                     }, 500)
-                    document
-                        .getElementById('modalButton')
-                        .addEventListener('click', () =>
-                            renderStartPage(element)
-                        )
+                    const modalButtonElement = document.getElementById(
+                        'modalButton'
+                    ) as HTMLDivElement
+                    modalButtonElement.addEventListener('click', () =>
+                        renderStartPage(element)
+                    )
                 }
             }
             card.innerHTML = `<img src="./assets/image/cards/${nameCard}.svg" alt="">`
