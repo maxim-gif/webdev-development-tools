@@ -10,7 +10,7 @@
         "lint:ts": "tsc --noEmit",
         "lint:css": "stylelint ./style/*.css",
         "prepare": "husky install",
-        "lint": "npm run lint:js && npm run lint:css && nmp run lint:ts && nmp run test",
+        "lint": "npm run lint:js && npm run lint:css && npm run lint:ts && npm run test",
         "lint:fix": "eslint --fix --ext .js .",
         "build": "cross-env NODE_ENV=production webpack",
         "start": "webpack-dev-server --open"
