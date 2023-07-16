@@ -1,4 +1,4 @@
-export function getRandomCards(arr: string[], n: number) {
+export const getRandomCards = (arr: string[], n: number) => {
     let result = []
     n /= 2
     for (let i = 0; i < n && arr.length > 0; i++) {
